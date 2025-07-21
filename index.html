@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <label for="checkbox" class="switch">
+            <input type="checkbox" id="checkbox">
+            <span class="slider"></span>
+        </label>
+
+        <label for="search" class="search">
+            <input type="search" id="search" placeholder="Enter your country">
+            <div class="displayloc">
+
+            </div>
+        </label>
+
+
+        <button id="curloc"> Current Location</button>
+    </header>
+    <section class="main-sec">
+
+
+
+        <div class="Current-weather-title">
+            <h2>Current Weather Forecast</h2>
+        </div>
+        <section class="sec1">
+
+
+            <div class="card1">
+                <div class="city"></div>
+                <div class="time">08:00</div>
+                <div class="daydate">
+                    <div class="day">Tuesday</div>
+                    <div class="date">13 - 12-2025</div>
+                </div>
+            </div>
+            <div class="card2">
+
+                <div class="tempandsun">
+                    <div class="temp"><span id="temp">55.5</span>&deg;C</div>
+                    <div class="sunrise riseset">
+                        <img id="sunriseimg" alt="">
+                        <div class="suntexttime">
+                            <span class="suntext">Sunrise</span>
+                            <span class="sunrisetime">08:32 AM</span>
+                        </div>
+                    </div>
+                    <div class="sunset riseset">
+                        <img id="sunsetimg" alt="">
+                        <div class="suntexttime">
+                            <span class="suntext">Sunset</span>
+                            <span class="sunsettime">08:32 PM</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="atmosphere">
+                    <div class="sun">
+                        <img id="atmimg" alt="">
+                    </div>
+                    <div class="atmospheretext">Partly cloudy</div>
+                </div>
+                <div class="hwp">
+                    <div class="humidity">
+                        <img id="humidityimg" alt="">
+                        <div class="humval">80%</div>
+                        <div class="humtext">Humidity</div>
+                    </div>
+                    <div class="wind">
+                        <img id="windimg" alt="">
+                        <div class="wval">2km/h</div>
+                        <div class="wtext">Wind Speed</div>
+                    </div>
+                    <div class="pressure">
+                        <img id="pressureimg" alt="">
+                        <div class="pval">90Pa</div>
+                        <div class="ptext">Pressure</div>
+                    </div>
+                    <div class="visibility">
+                        <img id="visibilityimg" alt="">
+                        <div class="uvval">10</div>
+                        <div class="uvtext">UV Index</div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <div class="daily-weather-title">
+            <h2>Daily Weather Forecast</h2>
+        </div>
+
+        <section class="sec2">
+            <div class="container swiper">
+                <div class="card-wrapper ">
+                    <ul class="card-list swiper-wrapper">
+
+                    </ul>
+                </div>
+                <div class="swiper-pagination"></div>
+
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </section>
+    </section>
+
+    <section class="hourly-section">
+        <div class="hourlyname">
+            <span>Hourly Weather Forecast</span>
+            <span class="hodate">23-12-2023</span>
+            <span class="hoday">Wednesday</span>
+        </div>
+
+        <div class="hourly-container">
+
+        </div>
+
+
+    </section>
+    <footer class="footer">
+        <div class="footer-content">
+            <span>&copy; 2024 Weather App. All rights reserved.</span>
+          </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+
+        const checkbox = document.getElementById('checkbox')
+
+        const sunriseimg = document.getElementById('sunriseimg')
+        const sunsetimg = document.getElementById('sunsetimg')
+        const windimg = document.getElementById('windimg')
+        const humidityimg = document.getElementById('humidityimg')
+        const pressureimg = document.getElementById('pressureimg')
+        const visibilityimg = document.getElementById('visibilityimg')
+
+        // Set default theme on load
+        window.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('bg-dark'); // Default to dark mode
+
+                sunriseimg.src = "/assets/sunrise.svg"
+                sunsetimg.src = "/assets/sunset.svg"
+                windimg.src = "/assets/wind.svg"
+                pressureimg.src = "/assets/pressure.svg"
+                humidityimg.src = "/assets/humidity.svg"
+                visibilityimg.src = "/assets/visibility.svg"
+
+            checkbox.checked = false;
+        });
+
+        checkbox.addEventListener("change", () => {
+            console.log('Checkbox changed:', checkbox.checked);
+            // Toggle dark/light mode
+            if (checkbox.checked) {
+                document.body.classList.remove('bg-dark');
+                document.body.classList.add('bg-light');
+
+                sunriseimg.src = "/assets/white_bg/sunrise-white 1.svg"
+                sunsetimg.src ="/assets/white_bg/sunset-white 1.svg"
+                windimg.src = "/assets/white/wind 1.svg"
+                pressureimg.src = "/assets/white_bg/pressure-white 1.svg"
+                humidityimg.src = "/assets/white_bg/humidity 1.svg"
+                visibilityimg.src = "/assets/white/uv-white 1.svg"
+
+
+
+            } else {
+                document.body.classList.remove('bg-light');
+                document.body.classList.add('bg-dark');
+
+                sunriseimg.src = "/assets/sunrise.svg"
+                sunsetimg.src = "/assets/sunset.svg"
+                windimg.src = "/assets/wind.svg"
+                pressureimg.src = "/assets/pressure.svg"
+                humidityimg.src = "/assets/humidity.svg"
+                visibilityimg.src = "/assets/visibility.svg"
+            }
+        })
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
